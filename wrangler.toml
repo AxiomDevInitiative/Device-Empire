@@ -1,0 +1,6 @@
+name = "device-empire-prototype"
+main = "src/worker.js"
+compatibility_date = "2026-11-11"
+
+# Intentionally no production build automation or secrets in this scaffold.
+# Configure account-specific bindings only after reviewing the existing Worker.
