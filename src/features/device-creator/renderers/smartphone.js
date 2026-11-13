@@ -1,9 +1,10 @@
 export function renderSmartphone(config = {}) {
-  const color = config.bodyColor || "#8b9baa";
-  const frame = Number(config.frameThickness ?? 7);
-  const camera = config.cameraStyle || "triple";
-  const screen = config.screenStyle || "dynamic";
-  const material = config.material || "aluminium";
+  const requestedColor = String(config.bodyColor || "");
+  const color = /^#[0-9a-f]{6}$/i.test(requestedColor) ? requestedColor : "#8b9baa";
+  const frame = Math.max(4, Math.min(12, Number(config.frameThickness ?? 7) || 7));
+  const camera = ["single", "dual", "triple"].includes(config.cameraStyle) ? config.cameraStyle : "triple";
+  const screen = ["minimal", "neon", "dynamic"].includes(config.screenStyle) ? config.screenStyle : "dynamic";
+  const material = ["aluminium", "glass", "plastic"].includes(config.material) ? config.material : "aluminium";
   const cameras = camera === "single" ? 1 : camera === "dual" ? 2 : 3;
   const cameraMarkup = Array.from({ length: cameras }, (_, i) => `<i class="de-camera-lens lens-${i + 1}"></i>`).join("");
   return `
