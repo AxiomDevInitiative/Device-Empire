@@ -1,4 +1,3 @@
-import { renderDashboard } from "./dashboard.js";
 import { getRegisteredFeatures } from "../features/registry.js";
 import { previewStyles, renderDevicePreview, getPreviewScript } from "../features/device-creator/preview/preview-engine.js";
 
