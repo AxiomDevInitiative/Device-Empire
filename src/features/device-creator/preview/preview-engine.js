@@ -1,4 +1,3 @@
-import { getCameraTransform } from "./preview-camera.js";
 import { renderPreviewControls } from "./preview-controls.js";
 import { renderSmartphone } from "../renderers/smartphone.js";
 
@@ -79,7 +78,8 @@ export function getPreviewScript() {
     const object=root.querySelector("[data-preview-object]"), stage=root.querySelector("[data-preview-stage]");
     const config={bodyColor:"#8b9baa",material:"aluminium",cameraStyle:"triple",screenStyle:"dynamic",frameThickness:7};
     let angle="threeQuarter",dragX=0,dragY=0,pointer=null,startX=0,startY=0;
-    const applyView=()=>{object.style.transform=${JSON.stringify(getCameraTransform("threeQuarter"))}.replace("rotateX(-8deg) rotateY(-28deg)", "rotateX("+(angle==="front"?0:angle==="back"?0:angle==="side"?0:-8+dragY)+"deg) rotateY("+(angle==="front"?0:angle==="back"?180:angle==="side"?90:-28+dragX)+"deg)")};
+    const presets={front:[0,0],back:[0,180],side:[0,90],threeQuarter:[-8,-28]};
+    const applyView=()=>{const [rx,ry]=presets[angle]||presets.threeQuarter;object.style.transform="rotateX("+(rx+dragY)+"deg) rotateY("+(ry+dragX)+"deg)"};
     const render=()=>{object.innerHTML=${JSON.stringify(renderSmartphone(config))};applyView()};
     root.querySelectorAll("[data-angle]").forEach(btn=>btn.addEventListener("click",()=>{angle=btn.dataset.angle;dragX=0;dragY=0;root.querySelectorAll("[data-angle]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));applyView()}));
     root.querySelector("[data-reset-view]").addEventListener("click",()=>{angle="threeQuarter";dragX=0;dragY=0;root.querySelectorAll("[data-angle]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.angle===angle)));applyView()});
