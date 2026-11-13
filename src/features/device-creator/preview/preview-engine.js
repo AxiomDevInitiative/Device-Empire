@@ -72,6 +72,7 @@ export function renderDevicePreview(config = {}) {
 }
 
 export function getPreviewScript() {
+  const initialMarkup = JSON.stringify(renderSmartphone());
   return `<script>
   (() => {
     const root=document.querySelector("#device-preview"); if(!root) return;
@@ -80,7 +81,7 @@ export function getPreviewScript() {
     let angle="threeQuarter",dragX=0,dragY=0,pointer=null,startX=0,startY=0;
     const presets={front:[0,0],back:[0,180],side:[0,90],threeQuarter:[-8,-28]};
     const applyView=()=>{const [rx,ry]=presets[angle]||presets.threeQuarter;object.style.transform="rotateX("+(rx+dragY)+"deg) rotateY("+(ry+dragX)+"deg)"};
-    const render=()=>{object.innerHTML=${JSON.stringify(renderSmartphone(config))};applyView()};
+    const render=()=>{object.innerHTML=${initialMarkup};applyView()};
     root.querySelectorAll("[data-angle]").forEach(btn=>btn.addEventListener("click",()=>{angle=btn.dataset.angle;dragX=0;dragY=0;root.querySelectorAll("[data-angle]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));applyView()}));
     root.querySelector("[data-reset-view]").addEventListener("click",()=>{angle="threeQuarter";dragX=0;dragY=0;root.querySelectorAll("[data-angle]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.angle===angle)));applyView()});
     root.querySelectorAll("[data-color]").forEach(btn=>btn.addEventListener("click",()=>{config.bodyColor=btn.dataset.color;root.querySelectorAll("[data-color]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));render()}));
