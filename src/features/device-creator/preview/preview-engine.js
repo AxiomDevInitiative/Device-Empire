@@ -81,7 +81,19 @@ export function getPreviewScript() {
     let angle="threeQuarter",dragX=0,dragY=0,pointer=null,startX=0,startY=0;
     const presets={front:[0,0],back:[0,180],side:[0,90],threeQuarter:[-8,-28]};
     const applyView=()=>{const [rx,ry]=presets[angle]||presets.threeQuarter;object.style.transform="rotateX("+(rx+dragY)+"deg) rotateY("+(ry+dragX)+"deg)"};
-    const render=()=>{object.innerHTML=${initialMarkup};applyView()};
+    const render=()=>{
+      object.innerHTML=${initialMarkup};
+      const phone=object.querySelector(".de-phone");
+      const screen=object.querySelector(".de-screen");
+      const island=object.querySelector(".de-camera-island");
+      phone.style.setProperty("--phone-color",config.bodyColor);
+      phone.style.setProperty("--frame-size",config.frameThickness+"px");
+      phone.dataset.material=config.material;
+      screen.className="de-screen screen-"+config.screenStyle;
+      const count=config.cameraStyle==="single"?1:config.cameraStyle==="dual"?2:3;
+      island.innerHTML=Array.from({length:count},(_,i)=>'<i class="de-camera-lens lens-'+(i+1)+'"></i>').join("")+'<span class="de-flash"></span>';
+      applyView();
+    };
     root.querySelectorAll("[data-angle]").forEach(btn=>btn.addEventListener("click",()=>{angle=btn.dataset.angle;dragX=0;dragY=0;root.querySelectorAll("[data-angle]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));applyView()}));
     root.querySelector("[data-reset-view]").addEventListener("click",()=>{angle="threeQuarter";dragX=0;dragY=0;root.querySelectorAll("[data-angle]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.angle===angle)));applyView()});
     root.querySelectorAll("[data-color]").forEach(btn=>btn.addEventListener("click",()=>{config.bodyColor=btn.dataset.color;root.querySelectorAll("[data-color]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));render()}));
