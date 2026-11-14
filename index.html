@@ -116,7 +116,7 @@ $("settings").onclick=()=>show("settingsPage");
 document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>BackSystem.backTo(b.dataset.back));
 $("prevLogo").onclick=()=>{logoIndex=(logoIndex+logos.length-1)%logos.length;drawLogo()};
 $("nextLogo").onclick=()=>{logoIndex=(logoIndex+1)%logos.length;drawLogo()};
-$("createCompany").onclick=()=>{const name=$("companyInput").value.trim();if(!name){$("companyInput").focus();$("companyInput").placeholder="Nama perusahaan wajib diisi!";return}const l=logos[logoIndex];SaveSystem.create({companyName:name,logoSymbol:l.symbol,logoName:l.name});updateMenu();openDashboard()};
+$("createCompany").onclick=()=>{const name=$("companyInput").value.trim();if(!name){$("companyInput").focus();$("companyInput").placeholder="Nama perusahaan wajib diisi!";return}const l=logos[logoIndex];const saved=SaveSystem.create({companyName:name,logoSymbol:l.symbol,logoName:l.name});updateMenu();DashboardSystem.render(saved);BackSystem.replaceCurrent("dashboard");renderScreen("dashboard")};
 $("mainMenuFromDash").onclick=()=>BackSystem.backTo("home");
 $("backDash").onclick=()=>BackSystem.backTo("dashboard");
 const savedSettings=(()=>{try{return JSON.parse(localStorage.getItem(SETTINGS)||"{}")}catch{return {}}})();
