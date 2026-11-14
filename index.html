@@ -7,6 +7,7 @@
 <title>Device Empire</title>
 <link rel="stylesheet" href="assets/css/menu-background.css">
 <link rel="stylesheet" href="assets/css/animation-system.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
 <style>
 :root{color-scheme:dark;--bg:#0b1020;--panel:#141d31;--line:#293853;--cyan:#51dcff;--purple:#a78bfa;--text:#f1f6ff;--muted:#91a2bd;--green:#5ee6a8}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#1b3550 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.5 system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}.shell{width:min(100% - 30px,760px);margin:auto;padding:22px 0 36px}.brand{text-align:center;font-size:23px;font-weight:950;letter-spacing:2px;margin:22px 0 4px}.brand span{color:var(--cyan)}.tag{text-align:center;color:var(--muted);font-size:11px;letter-spacing:2px;text-transform:uppercase}.screen{margin:32px auto 0;background:linear-gradient(145deg,#17243a,#101829);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 24px 70px #0005}.home-screen{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(145deg,#101a2bdc,#101829f0)}.menu-art{position:absolute;z-index:-1;inset:0;overflow:hidden;pointer-events:none;opacity:.8}.menu-art img{position:absolute;width:min(115%,900px);height:115%;object-fit:contain;left:50%;top:48%;transform:translate(-50%,-50%);animation:artFloat 9s ease-in-out infinite alternate}.home-content{position:relative;z-index:1;max-width:430px;margin:0 auto;text-align:center;padding:clamp(18px,5vw,42px) 0}.home-content .desc{margin-bottom:24px}.home-content .menu button{text-align:center;box-shadow:0 8px 24px #02081755}.home-screen:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 48%,transparent 0%,#0b102044 65%,#0b1020aa 100%);pointer-events:none}@keyframes artFloat{from{translate:-50% -48%;scale:1}to{translate:-50% -52%;scale:1.025}}@media(prefers-reduced-motion:reduce){.menu-art img{animation:none}}.screen h1{font-size:clamp(23px,5vw,31px);margin:0 0 5px}.desc{color:var(--muted);margin:0 0 23px}.menu{display:grid;gap:11px}.menu button,.primary,.secondary{border-radius:12px;padding:13px 16px;font-weight:800}.menu button{border:1px solid #344964;background:#101a2b;color:var(--text);text-align:left}.menu button:hover,.secondary:hover{border-color:var(--cyan)}.menu .mainbtn,.primary{background:linear-gradient(100deg,#31c8ef,#8b83ff);border:0;color:#081321}.menu .mainbtn{font-size:15px}.menu button:disabled{opacity:.35;cursor:not-allowed}.sectiontop{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.back{background:none;border:0;color:#a8dfff;font-weight:700;padding:6px 0}.field{display:grid;gap:7px;margin:17px 0}.field label{font-size:12px;color:#b8c7db;font-weight:700}.field input{width:100%;border:1px solid #344964;border-radius:11px;background:#0b1526;color:white;padding:13px;outline:none}.field input:focus{border-color:var(--cyan)}.logo-picker{display:grid;grid-template-columns:42px 1fr 42px;gap:12px;align-items:center}.arrow{height:48px;border:1px solid #344964;border-radius:12px;background:#101a2b;color:var(--cyan);font-size:22px}.logo-card{height:110px;border:1px solid #3a5675;border-radius:15px;background:radial-gradient(circle at 50% 20%,#284665,#101a2b 70%);display:grid;place-items:center;gap:2px}.logo-symbol{font-size:40px;line-height:1.1}.logo-name{font-size:10px;color:#b9c9df;letter-spacing:2px;font-weight:800}.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}.dot{width:6px;height:6px;border-radius:50%;background:#53657e}.dot.active{background:var(--cyan);width:18px;border-radius:9px}.primary{width:100%;margin-top:10px;padding:14px}.note{font-size:11px;color:var(--muted);margin-top:12px;text-align:center}.settingrow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}.settingrow strong{display:block}.settingrow small{color:var(--muted)}.switch{appearance:none;width:46px;height:26px;border-radius:20px;background:#34445b;position:relative;cursor:pointer;flex:none;transition:.2s}.switch:before{content:"";position:absolute;width:20px;height:20px;top:3px;left:3px;background:white;border-radius:50%;transition:.2s}.switch:checked{background:#22a9cf}.switch:checked:before{left:23px}.dashhead{display:flex;align-items:center;gap:14px;margin-bottom:20px}.companylogo{width:58px;height:58px;border-radius:15px;background:#1b3852;display:grid;place-items:center;font-size:29px;border:1px solid #41617f}.companyname{font-size:19px;font-weight:850}.muted{color:var(--muted);font-size:12px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}.stat{background:#0c1525;border:1px solid #293b56;border-radius:13px;padding:14px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:20px;margin-top:3px}.feature{border:1px solid #293b56;border-radius:14px;padding:16px;background:#0c1525}.feature h2{margin:0 0 5px;font-size:15px}.feature p{margin:0 0 13px;color:var(--muted);font-size:12px}.secondary{border:1px solid #344964;background:#101a2b;color:var(--text)}.hidden{display:none!important}.footer{text-align:center;color:#647792;font-size:10px;margin:22px 0}
@@ -42,12 +43,43 @@
 <div class="settingrow"><div><strong>Music</strong><small>Musik latar permainan</small></div><input class="switch" id="musicToggle" type="checkbox" aria-label="Toggle music"></div>
 <p class="note">File musik akan ditambahkan nanti.</p>
 </section>
-<section id="dashboard" class="screen hidden">
-<div class="dashhead"><div class="companylogo" id="dashLogo">◈</div><div><div class="companyname" id="dashName">Company</div><div class="muted">Technology company · Level 1</div></div></div>
-<h1>Company Dashboard</h1><p class="desc">Perusahaanmu sudah berdiri. Saatnya mulai membangun Device Empire.</p>
-<div class="stats"><div class="stat"><small>Company funds</small><strong>NC 10,000</strong></div><div class="stat"><small>Reputation</small><strong>0</strong></div></div>
-<div class="feature"><h2>📱 Device Creator</h2><p>Tempat merancang produk teknologi perusahaanmu.</p><button class="secondary" id="openCreator">Open Device Creator</button></div>
-<div style="margin-top:15px"><button class="back" id="mainMenuFromDash">← Main Menu</button></div>
+<section id="dashboard" class="screen dashboard-screen hidden">
+  <div class="dash-topbar">
+    <div class="dash-company"><div class="companylogo" id="dashLogo">◈</div><div><div class="companyname" id="dashName">Company</div><div class="muted">HEADQUARTERS · LEVEL 1</div></div></div>
+    <div class="resource-strip">
+      <div class="resource"><span class="resource-icon cash-icon" aria-hidden="true"></span><div><small>Money</small><strong id="dashMoney">NC 10,000</strong></div></div>
+      <div class="resource"><span class="resource-icon year-icon" aria-hidden="true"></span><div><small>Years</small><strong id="dashYears">Year 1</strong></div></div>
+      <div class="resource"><span class="resource-icon knowledge-icon" aria-hidden="true"></span><div><small>Knowledge</small><strong id="dashKnowledge">0 KP</strong></div></div>
+    </div>
+  </div>
+  <div class="office-heading"><div><p class="eyebrow">COMPANY HEADQUARTERS</p><h1>Executive Office</h1><p class="desc">Kelola perusahaan dan mulai bangun perangkat teknologi.</p></div></div>
+  <div class="office-scene" aria-label="Ilustrasi kantor direktur dengan seseorang bekerja di depan komputer">
+    <img class="device-atmosphere" src="assets/backgrounds/dashboard-devices.svg" alt="">
+    <img class="office-art" src="assets/backgrounds/dashboard-office.svg" alt="Ilustrasi 2,5D seorang direktur duduk di meja menggunakan komputer">
+    <div class="scene-glow"></div>
+  </div>
+  <div class="dashboard-actions">
+    <div class="action-label">COMPANY TOOLS</div>
+    <div class="create-anchor">
+      <button class="create-orb" id="createDeviceToggle" aria-expanded="false" aria-controls="createDevicePopup" aria-label="Create device">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10v28M10 24h28" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="create-popup hidden" id="createDevicePopup">
+        <div class="popup-title">CREATE DEVICE</div>
+        <button class="popup-option" id="createHandphone">
+          <span class="phone-glyph" aria-hidden="true"><svg viewBox="0 0 32 42"><rect x="5" y="2.5" width="22" height="37" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7h8M14 34h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span><strong>Handphone</strong><small>Create a new smartphone</small></span>
+          <span class="option-arrow">›</span>
+        </button>
+      </div>
+    </div>
+    <div class="action-caption">CREATE DEVICE</div>
+    <div class="dashboard-save-row">
+      <span class="save-status" id="saveStatus" role="status">All progress saved locally</span>
+      <button class="save-button" id="manualSave"><span class="save-icon" aria-hidden="true"></span> Save</button>
+    </div>
+  </div>
+  <div class="dashboard-bottom"><button class="back" id="mainMenuFromDash">← Main Menu</button></div>
 </section>
 <section id="creator" class="screen hidden">
 <div class="sectiontop"><button class="back" id="backDash">← Dashboard</button><span class="muted">PRODUCT WORKSHOP</span></div>
@@ -63,6 +95,8 @@
 <div class="footer">DEVICE EMPIRE · EARLY ACCESS</div>
 </div>
 <script src="assets/js/back-system/back-system.js"></script>
+<script src="assets/js/save-system/save-system.js"></script>
+<script src="assets/js/dashboard/dashboard.js"></script>
 <script src="assets/js/animation-system/animation-system.js"></script>
 <script>
 const KEY="device-empire-save-v1",SETTINGS="device-empire-settings-v1";
@@ -75,16 +109,15 @@ function show(id){BackSystem.navigate(id);renderScreen(id)}
 BackSystem.init({initialPage:"home",onNavigate:renderScreen});
 function updateMenu(){ $("continue").disabled=!getSave() }
 function drawLogo(){const l=logos[logoIndex];$("logoSymbol").textContent=l.symbol;$("logoName").textContent=l.name;$("logoDots").innerHTML=logos.map((_,i)=>'<span class="dot '+(i===logoIndex?"active":"")+'"></span>').join("")}
-function openDashboard(){const s=getSave();if(!s)return; $("dashLogo").textContent=s.logoSymbol;$("dashName").textContent=s.companyName;show("dashboard")}
+function openDashboard(){const s=getSave();if(!s)return;DashboardSystem.render(s);show("dashboard")}
 $("newGame").onclick=()=>{logoIndex=0;drawLogo();$("companyInput").value="";show("setup")};
 $("continue").onclick=openDashboard;
 $("settings").onclick=()=>show("settingsPage");
 document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>BackSystem.backTo(b.dataset.back));
 $("prevLogo").onclick=()=>{logoIndex=(logoIndex+logos.length-1)%logos.length;drawLogo()};
 $("nextLogo").onclick=()=>{logoIndex=(logoIndex+1)%logos.length;drawLogo()};
-$("createCompany").onclick=()=>{const name=$("companyInput").value.trim();if(!name){$("companyInput").focus();$("companyInput").placeholder="Nama perusahaan wajib diisi!";return}const l=logos[logoIndex];localStorage.setItem(KEY,JSON.stringify({companyName:name,logoSymbol:l.symbol,logoName:l.name,createdAt:Date.now(),funds:10000,reputation:0}));updateMenu();openDashboard()};
+$("createCompany").onclick=()=>{const name=$("companyInput").value.trim();if(!name){$("companyInput").focus();$("companyInput").placeholder="Nama perusahaan wajib diisi!";return}const l=logos[logoIndex];SaveSystem.create({companyName:name,logoSymbol:l.symbol,logoName:l.name});updateMenu();openDashboard()};
 $("mainMenuFromDash").onclick=()=>BackSystem.backTo("home");
-$("openCreator").onclick=()=>show("creator");
 $("backDash").onclick=()=>BackSystem.backTo("dashboard");
 const savedSettings=(()=>{try{return JSON.parse(localStorage.getItem(SETTINGS)||"{}")}catch{return {}}})();
 $("musicToggle").checked=savedSettings.music!==false;
