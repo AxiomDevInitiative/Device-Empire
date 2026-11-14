@@ -1,0 +1,18 @@
+/* Device Empire — Main Menu abstract 2.5D background */
+#menuBackdrop{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 38%,#18365366,transparent 58%),linear-gradient(180deg,#0b1020 0%,#0a1221 100%);perspective:900px;isolation:isolate}
+#menuBackdrop:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b1020cc,transparent 48%,#0b102099),linear-gradient(0deg,#0b1020 0%,transparent 35%,#0b102055 100%);z-index:3}
+#menuBackdrop .cube-field{position:absolute;inset:0;transform-style:preserve-3d}
+#menuBackdrop .cube{--s:54px;--x:50%;--y:50%;--z:0px;--delay:0s;--duration:7s;position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);transform-style:preserve-3d;transform:translate3d(-50%,-50%,var(--z)) rotateX(-28deg) rotateY(38deg);animation:cubeFloat var(--duration) ease-in-out var(--delay) infinite}
+#menuBackdrop .face{position:absolute;width:var(--s);height:var(--s);border:1px solid #8edfff35;backface-visibility:visible}
+#menuBackdrop .front{transform:translateZ(calc(var(--s)/2));background:linear-gradient(145deg,#4abfe52b,#244b7438)}
+#menuBackdrop .back{transform:rotateY(180deg) translateZ(calc(var(--s)/2));background:#142d4933}
+#menuBackdrop .right{transform:rotateY(90deg) translateZ(calc(var(--s)/2));background:linear-gradient(160deg,#8ce9ff32,#28517a42)}
+#menuBackdrop .left{transform:rotateY(-90deg) translateZ(calc(var(--s)/2));background:#19365345}
+#menuBackdrop .top{transform:rotateX(90deg) translateZ(calc(var(--s)/2));background:linear-gradient(135deg,#a7efff55,#4a83b655)}
+#menuBackdrop .bottom{transform:rotateX(-90deg) translateZ(calc(var(--s)/2));background:#101e324d}
+#menuBackdrop .cube:nth-child(3n) .face{border-color:#b9a4ff38}
+#menuBackdrop .cube:nth-child(3n) .top{background:linear-gradient(135deg,#d5c6ff55,#7664b855)}
+@keyframes cubeFloat{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -13px;rotate:2deg}}
+.shell{position:relative;z-index:1}
+#home.screen{background:linear-gradient(145deg,#111d30d9,#0d1728e8);backdrop-filter:blur(8px);border-color:#3b5877aa}
+@media(prefers-reduced-motion:reduce){#menuBackdrop .cube{animation:none}}
