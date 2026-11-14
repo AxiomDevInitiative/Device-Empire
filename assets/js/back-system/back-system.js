@@ -18,6 +18,13 @@
     stack.push(page);
     pushState(page);
   }
+  function replaceCurrent(page){
+    if(!page) return;
+    if(stack.length===0) stack.push(page);
+    else stack[stack.length-1]=page;
+    history.replaceState({deviceEmpire:true,page}, "", location.href);
+    return page;
+  }
   function backTo(page){
     if(!page || stack[stack.length-1]===page) return;
     const index=stack.lastIndexOf(page);
@@ -45,5 +52,5 @@
       onNavigate(target);
     });
   }
-  window.BackSystem={init,navigate,backTo,getCurrentPage:()=>stack[stack.length-1]||null};
+  window.BackSystem={init,navigate,backTo,replaceCurrent,getCurrentPage:()=>stack[stack.length-1]||null};
 })();
