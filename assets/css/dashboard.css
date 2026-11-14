@@ -1,0 +1,55 @@
+/* Device Empire — executive dashboard */
+.dashboard-screen{padding:clamp(14px,3vw,24px);overflow:visible}
+.dash-topbar{display:flex;flex-direction:column;gap:14px}
+.dash-company{display:flex;align-items:center;gap:11px}
+.dash-company .companylogo{flex:none}
+.resource-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.resource{display:flex;align-items:center;gap:8px;min-width:0;padding:10px 8px;border:1px solid #30445f;border-radius:12px;background:linear-gradient(145deg,#17283d,#0d1728)}
+.resource small{display:block;color:#91a2bd;font-size:10px;white-space:nowrap}
+.resource strong{display:block;font-size:clamp(11px,2.7vw,14px);white-space:nowrap}
+.resource-icon{width:23px;height:23px;flex:none;position:relative;border-radius:7px;background:#1c4059}
+.cash-icon:before{content:"";position:absolute;inset:6px 4px;border:1.5px solid #65dcff;border-radius:3px}
+.cash-icon:after{content:"";position:absolute;width:5px;height:5px;left:9px;top:9px;border:1px solid #65dcff;border-radius:50%}
+.year-icon:before{content:"";position:absolute;inset:4px;border:1.5px solid #b7a2ff;border-radius:50%}
+.year-icon:after{content:"";position:absolute;width:6px;height:6px;left:10px;top:6px;border-left:1.5px solid #b7a2ff;border-bottom:1.5px solid #b7a2ff}
+.knowledge-icon:before{content:"";position:absolute;inset:5px 7px;border:1.5px solid #75e6b1;border-radius:2px;transform:rotate(45deg)}
+.knowledge-icon:after{content:"";position:absolute;left:10px;top:10px;width:4px;height:4px;background:#75e6b1;border-radius:50%}
+.office-heading{margin:23px 0 12px}
+.eyebrow,.action-label,.popup-title{margin:0 0 5px;color:#70dfff;font-size:9px;font-weight:900;letter-spacing:2px}
+.office-heading h1{margin:0 0 4px;font-size:clamp(22px,5vw,29px)}
+.office-heading .desc{margin:0;font-size:12px}
+.office-scene{position:relative;isolation:isolate;height:clamp(230px,58vw,390px);overflow:hidden;border:1px solid #36516d;border-radius:19px;background:radial-gradient(ellipse at 50% 60%,#244766 0,#13273e 53%,#0c1728 100%);box-shadow:inset 0 0 45px #050b16aa}
+.office-scene:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#09132155,transparent 50%,#07101c44);pointer-events:none}
+.office-art{position:absolute;z-index:2;width:90%;height:96%;left:5%;bottom:-2%;object-fit:contain;object-position:center bottom;animation:officeBreath 7s ease-in-out infinite}
+.device-atmosphere{position:absolute;z-index:1;width:100%;height:100%;inset:0;object-fit:cover;opacity:.9;animation:deviceDrift 12s ease-in-out infinite alternate}
+.scene-glow{position:absolute;z-index:0;width:65%;height:30%;left:17%;bottom:4%;background:#49bce733;filter:blur(40px);border-radius:50%}
+@keyframes officeBreath{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes deviceDrift{from{transform:translateY(5px) scale(1)}to{transform:translateY(-8px) scale(1.025)}}
+.dashboard-actions{position:relative;margin-top:22px;padding:15px;border:1px solid #2a405c;border-radius:17px;background:linear-gradient(145deg,#142238,#0d1728)}
+.action-label{margin-bottom:15px;color:#8fa6c2}
+.create-anchor{position:relative;width:max-content;margin:0 auto}
+.create-orb{width:68px;height:68px;border:1px solid #a3eaff;border-radius:50%;display:grid;place-items:center;color:#071525;background:linear-gradient(145deg,#65e4ff,#7788ff);box-shadow:0 0 0 7px #5bd8ff12,0 10px 30px #38bde744;transition:transform .2s,box-shadow .2s}
+.create-orb svg{width:34px;height:34px}
+.create-orb.is-open{transform:rotate(45deg);box-shadow:0 0 0 9px #5bd8ff18,0 12px 36px #38bde766}
+.action-caption{text-align:center;margin-top:8px;color:#a8c4df;font-size:9px;font-weight:900;letter-spacing:1.7px}
+.create-popup{position:absolute;z-index:10;left:50%;bottom:calc(100% + 13px);width:min(270px,calc(100vw - 70px));transform:translateX(-50%);padding:12px;border:1px solid #52718e;border-radius:15px;background:linear-gradient(145deg,#1b3049,#0d192a);box-shadow:0 18px 45px #0009;transform-origin:50% 100%;animation:popupIn .18s ease-out both}
+.create-popup:after{content:"";position:absolute;left:calc(50% - 7px);bottom:-7px;width:13px;height:13px;background:#101e31;border-right:1px solid #52718e;border-bottom:1px solid #52718e;transform:rotate(45deg)}
+.popup-title{padding:2px 4px 9px;color:#85dfff}
+.popup-option{position:relative;z-index:1;display:flex;align-items:center;gap:10px;width:100%;padding:10px;border:1px solid #314b67;border-radius:11px;background:#101e31;color:#eaf6ff;text-align:left}
+.popup-option strong,.popup-option small{display:block}
+.popup-option strong{font-size:12px}
+.popup-option small{font-size:10px;color:#92a9c2}
+.phone-glyph{width:32px;height:38px;display:grid;place-items:center;border-radius:8px;background:#1b3b55;color:#65dcff}
+.phone-glyph svg{width:22px;height:30px}
+.option-arrow{margin-left:auto;font-size:22px;color:#72dfff}
+@keyframes popupIn{from{opacity:0;translate:0 7px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
+.dashboard-save-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:12px;border-top:1px solid #293d56}
+.save-status{font-size:10px;color:#90a8c2}
+.save-button{display:flex;align-items:center;gap:7px;padding:8px 13px;border:1px solid #3d6684;border-radius:9px;background:#142d43;color:#bdeeff;font-size:11px;font-weight:800}
+.save-icon{width:12px;height:12px;border:1.5px solid currentColor;border-radius:2px;position:relative}
+.save-icon:before{content:"";position:absolute;left:2px;top:1px;width:5px;height:3px;border-bottom:1px solid currentColor}
+.save-icon:after{content:"";position:absolute;left:3px;bottom:1px;width:4px;height:3px;border:1px solid currentColor}
+.dashboard-bottom{margin-top:14px}
+@media(min-width:600px){.dash-topbar{flex-direction:row;align-items:center;justify-content:space-between}.resource-strip{width:min(62%,440px)}.office-art{width:76%;left:12%}}
+@media(max-width:390px){.resource{gap:5px;padding:8px 5px}.resource-icon{width:19px;height:19px}.resource strong{font-size:10px}.office-scene{height:245px}}
+@media(prefers-reduced-motion:reduce){.office-art,.device-atmosphere{animation:none}.create-popup{animation:none}}
