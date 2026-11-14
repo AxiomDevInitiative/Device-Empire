@@ -2,26 +2,16 @@
 
 A mobile-first, browser-based technology company simulator.
 
+## Play
+
+GitHub Pages: https://axiomdevinitiative.github.io/Device-Empire/
+
 ## Development
 
-```bash
-npm install
-npm run dev
-```
+This project is a static website. Open `index.html` in a browser or use a local static server while developing.
 
-## Cloudflare Worker
+## Deployment
 
-The Worker name is `device-empire`, separate from the older `device-empire-prototype`.
+GitHub Pages serves the website from the repository. Push changes to the configured Pages branch/source to publish updates.
 
-## GitHub Actions deployment
-
-The workflow is intentionally manual at first (`workflow_dispatch`) so pushes to `main` cannot deploy before credentials and the first build are verified.
-
-Add these repository Actions secrets:
-
-- `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with narrowly scoped Workers deployment permissions.
-- `CLOUDFLARE_ACCOUNT_ID`: the Cloudflare account ID.
-
-After adding the secrets, run **Actions → Deploy Device Empire → Run workflow**. Automatic deployment on pushes to `main` can be enabled after the first successful test.
-
-Never commit API tokens or other credentials to this repository.
+No Cloudflare Worker, API token, or account credentials are required for the current game frontend.
