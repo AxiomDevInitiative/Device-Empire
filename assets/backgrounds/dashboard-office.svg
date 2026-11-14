@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" fill="none">
+<defs>
+ <linearGradient id="desk" x1="180" y1="410" x2="810" y2="590" gradientUnits="userSpaceOnUse"><stop stop-color="#47799B"/><stop offset="1" stop-color="#172D47"/></linearGradient>
+ <linearGradient id="screen" x1="390" y1="160" x2="610" y2="390" gradientUnits="userSpaceOnUse"><stop stop-color="#6CE4FF"/><stop offset="1" stop-color="#5464C7"/></linearGradient>
+ <linearGradient id="shirt" x1="410" y1="260" x2="630" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#5DD4ED"/><stop offset="1" stop-color="#315D91"/></linearGradient>
+ <linearGradient id="skin" x1="500" y1="130" x2="580" y2="260" gradientUnits="userSpaceOnUse"><stop stop-color="#E9B98F"/><stop offset="1" stop-color="#A96D55"/></linearGradient>
+ <filter id="shadow" x="0" y="0" width="1000" height="620"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<ellipse cx="510" cy="550" rx="350" ry="35" fill="#020916" opacity=".55" filter="url(#shadow)"/>
+<!-- chair -->
+<path d="M384 302Q370 250 420 236H590Q640 250 625 350L610 458H394L384 302Z" fill="#1B3451" stroke="#4B7392" stroke-width="5"/>
+<path d="M420 290Q500 265 590 290L578 430H432L420 290Z" fill="#284C6D"/>
+<!-- person torso -->
+<path d="M420 270Q452 238 490 242H565Q615 250 636 310L676 438H354L390 310Q398 283 420 270Z" fill="url(#shirt)" stroke="#75DDF4" stroke-width="4"/>
+<path d="M468 250L500 300L535 250" stroke="#B5F3FF" stroke-width="4" opacity=".65"/>
+<!-- neck and head -->
+<path d="M482 221H554V276Q518 302 482 270V221Z" fill="url(#skin)"/>
+<ellipse cx="519" cy="169" rx="75" ry="87" fill="url(#skin)" stroke="#F0C39B" stroke-width="3"/>
+<path d="M446 166Q438 76 523 76Q600 76 594 166L579 145Q555 119 520 124Q481 121 459 151L446 166Z" fill="#17263B"/>
+<path d="M450 149Q462 89 523 91Q573 90 589 139Q550 115 520 122Q480 118 450 149Z" fill="#243B57"/>
+<path d="M480 177h15M545 177h15" stroke="#27394B" stroke-width="5" stroke-linecap="round"/>
+<path d="M510 207Q521 213 534 205" stroke="#8D514A" stroke-width="4" stroke-linecap="round"/>
+<!-- arms -->
+<path d="M405 307Q373 330 352 383L300 414Q284 429 299 444Q313 455 330 442L405 405Q443 378 451 333" fill="url(#skin)" stroke="#D99B76" stroke-width="4"/>
+<path d="M618 309Q651 337 674 382L724 406Q741 418 729 436Q717 450 698 439L625 411Q588 386 577 338" fill="url(#skin)" stroke="#D99B76" stroke-width="4"/>
+<!-- desk monitor -->
+<path d="M355 135Q355 122 370 122H650Q665 122 665 137V332H355V135Z" fill="#0A1728" stroke="#527C9A" stroke-width="8"/>
+<rect x="371" y="139" width="278" height="177" rx="9" fill="url(#screen)"/>
+<path d="M392 280L470 208L520 249L579 181L630 232V300H392V280Z" fill="#D9F8FF" opacity=".27"/>
+<path d="M496 333H524V382H496Z" fill="#345A79"/>
+<path d="M454 385H567L587 400H434L454 385Z" fill="#6289A4"/>
+<!-- keyboard -->
+<path d="M378 421L624 421L667 453H340L378 421Z" fill="#192E47" stroke="#5D88A6" stroke-width="4"/>
+<path d="M390 431H615M378 442H632" stroke="#83DFF4" stroke-width="3" stroke-dasharray="8 8" opacity=".7"/>
+<!-- desk -->
+<path d="M150 448L850 448L780 500H220L150 448Z" fill="url(#desk)" stroke="#76B4D1" stroke-width="5"/>
+<path d="M220 500H780L752 578H248L220 500Z" fill="#172D46" stroke="#355B78" stroke-width="4"/>
+<path d="M250 515H750" stroke="#5E91B0" stroke-width="3" opacity=".55"/>
+<!-- desk objects -->
+<path d="M720 405Q750 385 780 407L766 448H708L720 405Z" fill="#294B68" stroke="#6CA4C2" stroke-width="3"/>
+<path d="M739 393V365M739 380Q709 369 711 347Q737 347 739 380ZM741 378Q766 359 779 371Q770 394 741 378Z" fill="#5FD0B2"/>
+<rect x="242" y="408" width="70" height="36" rx="7" fill="#203C58" stroke="#70A8C7" stroke-width="3"/>
+<path d="M251 418H300M251 428H286" stroke="#8DDFF2" stroke-width="3" stroke-linecap="round"/>
+<!-- monitor side status -->
+<circle cx="633" cy="305" r="3" fill="#75F0BC"/>
+</svg>
