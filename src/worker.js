@@ -1,39 +1,110 @@
 const PAGE = String.raw`<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090d18">
-  <title>Device Empire</title>
-  <style>
-    :root{color-scheme:dark;--bg:#090d18;--panel:#111a2b;--line:#26354d;--cyan:#42d9ff;--purple:#9c7bff;--text:#eef5ff;--muted:#91a3bd}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#17314a 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 system-ui, sans-serif}
-    .shell{max-width:1100px;margin:auto;padding:24px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}
-    .brand{font-size:20px;font-weight:800;letter-spacing:.4px}.brand span{color:var(--cyan)}.tag{color:var(--muted);font-size:12px}
-    .hero{padding:48px 0 28px}.eyebrow{color:var(--cyan);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase}
-    h1{font-size:clamp(34px,7vw,64px);line-height:1.03;max-width:720px;margin:12px 0}.hero p{max-width:600px;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}.card{background:linear-gradient(145deg,#152238,#0e1625);border:1px solid var(--line);border-radius:18px;padding:20px;min-height:150px}
-    .card .ico{font-size:26px}.card h2{font-size:17px;margin:12px 0 5px}.card p{color:var(--muted);font-size:13px;margin:0}
-    .status{display:inline-flex;align-items:center;gap:8px;border:1px solid #28546a;background:#102b3b;color:#9deaff;border-radius:999px;padding:7px 11px;font-size:12px}
-    .dot{width:7px;height:7px;border-radius:50%;background:#54e5a2;box-shadow:0 0 12px #54e5a2}
-    footer{margin-top:34px;color:var(--muted);font-size:12px}
-    @media(max-width:680px){.shell{padding:18px}.grid{grid-template-columns:1fr}.hero{padding:36px 0 18px}.top{align-items:flex-start;flex-direction:column}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>Device Empire — Smartphone Creator</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1020;--panel:#141d31;--panel2:#10182a;--line:#293853;--cyan:#51dcff;--purple:#a78bfa;--text:#f1f6ff;--muted:#91a2bd;--green:#5ee6a8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b3550 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.5 system-ui,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1180px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 2px 18px;border-bottom:1px solid var(--line)}.brand{font-size:19px;font-weight:900;letter-spacing:.5px}.brand span{color:var(--cyan)}.sub{font-size:11px;color:var(--muted)}.topright{display:flex;align-items:center;gap:9px}.pill{border:1px solid #28546a;background:#102b3b;color:#a6edff;border-radius:99px;padding:7px 10px;font-size:11px}.money{font-weight:800;color:#a8f5ce}
+.nav{display:flex;gap:8px;overflow:auto;padding:14px 0}.nav button{white-space:nowrap;border:1px solid var(--line);background:#111a2b;color:var(--muted);padding:9px 13px;border-radius:11px}.nav button.active{background:#16334a;border-color:#34738d;color:#b9f2ff}
+.heading{margin:20px 0}.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);font-weight:800}.heading h1{font-size:clamp(25px,5vw,36px);line-height:1.1;margin:7px 0}.heading p{color:var(--muted);margin:0}
+.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:16px;align-items:start}.panel{background:linear-gradient(150deg,#17243a,#101829);border:1px solid var(--line);border-radius:18px;padding:17px}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.panelhead h2{font-size:15px;margin:0}.small{font-size:11px;color:var(--muted)}
+.stage{min-height:390px;display:grid;place-items:center;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 58%,#273e5d 0,transparent 48%),linear-gradient(145deg,#101a2d,#0c1322);border:1px solid #253651;border-radius:15px;perspective:900px}
+.device{width:174px;height:330px;position:relative;transform:rotateY(-18deg) rotateX(5deg);transform-style:preserve-3d;transition:transform .3s}
+.phoneback{position:absolute;inset:0;border-radius:31px;background:linear-gradient(145deg,var(--phone),#17243a 125%);border:2px solid #9db4ca55;box-shadow:18px 22px 30px #0008,inset 0 0 0 3px #ffffff12;overflow:hidden}
+.phoneback:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#ffffff35,transparent 35%,transparent 70%,#0003);pointer-events:none}
+.camera-island{position:absolute;top:17px;left:14px;width:67px;padding:8px 7px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px;background:#111827bb;border:1px solid #ffffff40;border-radius:16px}
+.lens{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a8c7e5 0 8%,#243e61 20%,#080e1b 65%);border:2px solid #8799aa}
+.flash{width:9px;height:9px;border-radius:50%;background:#f7e6b2;align-self:center;justify-self:center;box-shadow:0 0 8px #fff6}
+.logo{position:absolute;top:49%;left:0;right:0;text-align:center;font-size:15px;font-weight:800;letter-spacing:3px;color:#ffffffd9;text-shadow:0 2px 5px #0005}
+.modelmark{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#ffffff9c;font-size:9px;letter-spacing:2px}
+.phoneedge{position:absolute;right:-7px;top:55px;width:8px;height:78px;border-radius:0 5px 5px 0;background:linear-gradient(90deg,#71839a,#d2dce8,#53677e);transform:translateZ(-3px)}
+.previewlabel{position:absolute;bottom:13px;left:14px;right:14px;display:flex;justify-content:space-between;color:#8fa4c0;font-size:10px}
+.specrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.spec{background:#0c1525;border:1px solid #293b56;border-radius:10px;padding:7px 10px;color:#b9c9df;font-size:11px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:#aebdd1;font-weight:700}.field input,.field select{width:100%;border:1px solid #31425d;border-radius:10px;background:#0c1525;color:var(--text);padding:10px 11px;outline:none}.field input:focus,.field select:focus{border-color:var(--cyan)}input[type=color]{height:43px;padding:4px}.rangehead{display:flex;justify-content:space-between;gap:8px}.rangehead output{color:var(--cyan);font-size:11px}.field input[type=range]{padding:0;accent-color:var(--cyan)}
+.actions{display:flex;gap:9px;margin-top:16px}.primary,.secondary{border-radius:11px;padding:11px 14px;font-weight:800}.primary{border:0;background:linear-gradient(100deg,#31c8ef,#8b83ff);color:#081321;flex:1}.secondary{border:1px solid var(--line);background:#101a2b;color:#d9e6f7}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#143a32;border:1px solid #32745f;color:#baffdf;padding:10px 15px;border-radius:12px;transition:.25s;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}
+.saved{margin-top:15px;border-top:1px solid var(--line);padding-top:13px}.saved h3{font-size:12px;margin:0 0 9px}.saveditem{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#0c1525;border:1px solid #293b56;padding:9px 10px;border-radius:10px;margin-top:7px;font-size:11px}.empty{color:var(--muted);font-size:11px}
+footer{padding:22px 2px;color:#72839d;font-size:10px}
+@media(max-width:760px){.app{padding:14px}.layout{grid-template-columns:1fr}.stage{min-height:355px}.top{align-items:flex-start}.topright{flex-direction:column;align-items:flex-end}.formgrid{gap:11px}}
+@media(max-width:380px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.device{transform:scale(.9) rotateY(-18deg) rotateX(5deg)}}
+</style>
 </head>
 <body>
-  <main class="shell">
-    <header class="top"><div><div class="brand">DEVICE <span>EMPIRE</span></div><div class="tag">Build technology. Build your empire.</div></div><div class="status"><i class="dot"></i> Core online · Foundation 0.1</div></header>
-    <section class="hero"><div class="eyebrow">Your technology journey starts here</div><h1>From a small startup to a tech empire.</h1><p>Bangun perusahaan teknologi, teliti komponen, rancang perangkat, kelola produksi, dan kembangkan bisnis hingga mendunia.</p></section>
-    <section class="grid">
-      <article class="card"><div class="ico">🏢</div><h2>Company</h2><p>Kelola identitas, keuangan, reputasi, dan perkembangan perusahaan.</p></article>
-      <article class="card"><div class="ico">🧪</div><h2>Research & Development</h2><p>Kembangkan CPU, GPU, layar, baterai, dan teknologi baru.</p></article>
-      <article class="card"><div class="ico">📱</div><h2>Device Creator</h2><p>Rancang smartphone, laptop, tablet, dan perangkat lainnya.</p></article>
-      <article class="card"><div class="ico">🏭</div><h2>Manufacturing</h2><p>Bangun fasilitas dan atur proses produksi perangkat.</p></article>
-      <article class="card"><div class="ico">📈</div><h2>Marketplace</h2><p>Pasarkan produk, pantau permintaan, dan bersaing di pasar.</p></article>
-      <article class="card"><div class="ico">🌐</div><h2>Technology World</h2><p>Hadapi tren pasar, kompetitor, dan perkembangan industri.</p></article>
-    </section>
-    <footer>Device Empire · Early foundation build · Progression systems are under construction.</footer>
-  </main>
+<main class="app">
+<header class="top"><div><div class="brand">DEVICE <span>EMPIRE</span></div><div class="sub">Technology company simulator</div></div><div class="topright"><div class="pill">● SYSTEM ONLINE</div><div class="money">NC 10,000</div></div></header>
+<nav class="nav"><button class="active">📱 Device Creator</button><button disabled>🧪 Research · Soon</button><button disabled>🏭 Production · Soon</button><button disabled>🛒 Marketplace · Soon</button></nav>
+<section class="heading"><div class="eyebrow">Product workshop / 01</div><h1>Smartphone Creator</h1><p>Rancang smartphone pertamamu. Ubah spesifikasi dan lihat desainnya diperbarui secara langsung.</p></section>
+<section class="layout">
+<div class="panel">
+<div class="panelhead"><h2>Live device preview</h2><span class="small">CSS 2.5D renderer</span></div>
+<div class="stage"><div class="device" id="device"><div class="phoneback" id="phoneback"><div class="camera-island" id="cameraIsland"><i class="lens"></i><i class="lens"></i><i class="lens"></i><i class="flash"></i></div><div class="logo" id="logo">NUSA</div><div class="modelmark" id="modelmark">ONE PRO</div></div><div class="phoneedge"></div></div><div class="previewlabel"><span>REAR DESIGN</span><span id="previewSize">6.5-inch display</span></div></div>
+<div class="specrow"><span class="spec" id="specCamera">3 cameras</span><span class="spec" id="specScreen">6.5-inch</span><span class="spec" id="specStorage">256 GB</span></div>
+</div>
+<div class="panel">
+<div class="panelhead"><h2>Device configuration</h2><span class="small">Unsaved draft</span></div>
+<div class="formgrid">
+<div class="field"><label for="brand">Brand name</label><input id="brand" maxlength="12" value="NUSA"></div>
+<div class="field"><label for="model">Model name</label><input id="model" maxlength="16" value="ONE PRO"></div>
+<div class="field full"><label for="color">Body color</label><input id="color" type="color" value="#527da9"></div>
+<div class="field full"><div class="rangehead"><label for="screen">Screen size</label><output id="screenValue">6.5 inch</output></div><input id="screen" type="range" min="5.8" max="7.2" step="0.1" value="6.5"></div>
+<div class="field"><label for="camera">Rear cameras</label><select id="camera"><option value="1">1 camera</option><option value="2">2 cameras</option><option value="3" selected>3 cameras</option><option value="4">4 cameras</option></select></div>
+<div class="field"><label for="storage">Storage</label><select id="storage"><option>64 GB</option><option>128 GB</option><option selected>256 GB</option><option>512 GB</option><option>1 TB</option></select></div>
+<div class="field full"><label for="finish">Body finish</label><select id="finish"><option value="glossy">Glossy glass</option><option value="matte" selected>Matte</option><option value="satin">Satin metal</option></select></div>
+</div>
+<div class="actions"><button class="primary" id="save">Save device design</button><button class="secondary" id="reset">Reset</button></div>
+<div class="saved"><h3>Saved designs</h3><div id="savedList"><div class="empty">Belum ada desain tersimpan.</div></div></div>
+</div>
+</section>
+<footer>DEVICE EMPIRE · FOUNDATION 0.2 · Your designs are stored locally in this browser.</footer>
+</main>
+<div class="toast" id="toast">Design saved!</div>
+<script>
+const $=id=>document.getElementById(id);
+const defaults={brand:"NUSA",model:"ONE PRO",color:"#527da9",screen:"6.5",camera:"3",storage:"256 GB",finish:"matte"};
+const fields=["brand","model","color","screen","camera","storage","finish"];
+function config(){const o={};fields.forEach(k=>o[k]=$(k).value);return o}
+function render(){
+ const c=config(),count=Number(c.camera),size=Number(c.screen);
+ $("logo").textContent=c.brand.trim().toUpperCase()||"BRAND";
+ $("modelmark").textContent=c.model.trim().toUpperCase()||"MODEL";
+ $("phoneback").style.setProperty("--phone",c.color);
+ $("screenValue").textContent=size.toFixed(1)+" inch";
+ $("previewSize").textContent=size.toFixed(1)+"-inch display";
+ $("specCamera").textContent=count+" camera"+(count>1?"s":"");
+ $("specScreen").textContent=size.toFixed(1)+"-inch";
+ $("specStorage").textContent=c.storage;
+ const island=$("cameraIsland");island.innerHTML="";
+ for(let i=0;i<count;i++){const lens=document.createElement("i");lens.className="lens";island.appendChild(lens)}
+ const flash=document.createElement("i");flash.className="flash";island.appendChild(flash);
+ island.style.gridTemplateColumns=count===1?"1fr":count===2?"repeat(2,1fr)":"repeat(2,1fr)";
+ island.style.width=count===1?"48px":count===2?"60px":"67px";
+ const back=$("phoneback");
+ back.style.background=c.finish==="glossy"?"linear-gradient(135deg,#ffffff66,var(--phone) 30%,#111827 145%)":c.finish==="satin"?"linear-gradient(110deg,#ffffff35,var(--phone) 45%,#111827 150%)":"linear-gradient(145deg,var(--phone),#17243a 125%)";
+}
+fields.forEach(k=>$(k).addEventListener("input",render));
+function showToast(message){$("toast").textContent=message;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1800)}
+function loadSaved(){
+ let items=[];try{items=JSON.parse(localStorage.getItem("de-device-designs")||"[]")}catch{}
+ const list=$("savedList");list.innerHTML="";
+ if(!items.length){list.innerHTML='<div class="empty">Belum ada desain tersimpan.</div>';return}
+ items.forEach((item,index)=>{
+  const row=document.createElement("div");row.className="saveditem";
+  const name=document.createElement("span");name.textContent=(item.brand||"BRAND")+" "+(item.model||"MODEL");
+  const btn=document.createElement("button");btn.className="secondary";btn.textContent="Load";btn.addEventListener("click",()=>{fields.forEach(k=>$(k).value=item[k]??defaults[k]);render();showToast("Design loaded")});
+  row.append(name,btn);list.appendChild(row);
+ });
+}
+$("save").addEventListener("click",()=>{
+ const item=config();let items=[];try{items=JSON.parse(localStorage.getItem("de-device-designs")||"[]")}catch{}
+ items.unshift(item);items=items.slice(0,8);localStorage.setItem("de-device-designs",JSON.stringify(items));loadSaved();showToast("Device design saved!");
+});
+$("reset").addEventListener("click",()=>{fields.forEach(k=>$(k).value=defaults[k]);render();showToast("Configuration reset")});
+render();loadSaved();
+</script>
 </body>
 </html>`;
 
@@ -41,7 +112,7 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
     if (url.pathname === "/health") {
-      return Response.json({ ok: true, app: "device-empire", version: "0.1.0" });
+      return Response.json({ ok: true, app: "device-empire", version: "0.2.0" });
     }
     if (url.pathname !== "/" && url.pathname !== "/index.html") {
       return new Response("Not Found", { status: 404 });
