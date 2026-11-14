@@ -2,6 +2,8 @@
 .screen{transform-origin:50% 45%;will-change:transform,opacity}
 .screen.anim-enter{animation:deMenuIn .34s cubic-bezier(.2,.8,.2,1) both}
 .screen.anim-exit{animation:deMenuOut .19s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes deTap{0%{transform:scale(1)}45%{transform:scale(.95)}100%{transform:scale(1)}}
+.tap-pop{animation:deTap .18s ease}
 @keyframes deMenuIn{from{opacity:0;transform:translateY(13px) scale(.975);filter:blur(3px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
 @keyframes deMenuOut{from{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}to{opacity:0;transform:translateY(-7px) scale(.985);filter:blur(2px)}}
 button{transition:transform .16s ease,filter .16s ease,border-color .16s ease,box-shadow .16s ease}
