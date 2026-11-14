@@ -61,26 +61,29 @@
 </section>
 <div class="footer">DEVICE EMPIRE · EARLY ACCESS</div>
 </div>
+<script src="assets/js/back-system/back-system.js"></script>
 <script>
 const KEY="device-empire-save-v1",SETTINGS="device-empire-settings-v1";
 const logos=[{symbol:"◈",name:"NEXUS"},{symbol:"✦",name:"NOVA"},{symbol:"⬡",name:"PULSE"}];
 let logoIndex=0;
 const $=id=>document.getElementById(id);
 function getSave(){try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch{return null}}
-function show(id){["home","setup","settingsPage","dashboard","creator"].forEach(x=>$(x).classList.toggle("hidden",x!==id));$("menuBackdrop").classList.toggle("hidden",id!=="home") }
+function renderScreen(id){["home","setup","settingsPage","dashboard","creator"].forEach(x=>$(x).classList.toggle("hidden",x!==id));$("menuBackdrop").classList.toggle("hidden",id!=="home")}
+function show(id){BackSystem.navigate(id);renderScreen(id)}
+BackSystem.init({initialPage:"home",onNavigate:renderScreen});
 function updateMenu(){ $("continue").disabled=!getSave() }
 function drawLogo(){const l=logos[logoIndex];$("logoSymbol").textContent=l.symbol;$("logoName").textContent=l.name;$("logoDots").innerHTML=logos.map((_,i)=>'<span class="dot '+(i===logoIndex?"active":"")+'"></span>').join("")}
 function openDashboard(){const s=getSave();if(!s)return; $("dashLogo").textContent=s.logoSymbol;$("dashName").textContent=s.companyName;show("dashboard")}
 $("newGame").onclick=()=>{logoIndex=0;drawLogo();$("companyInput").value="";show("setup")};
 $("continue").onclick=openDashboard;
 $("settings").onclick=()=>show("settingsPage");
-document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>show(b.dataset.back));
+document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>BackSystem.backTo(b.dataset.back));
 $("prevLogo").onclick=()=>{logoIndex=(logoIndex+logos.length-1)%logos.length;drawLogo()};
 $("nextLogo").onclick=()=>{logoIndex=(logoIndex+1)%logos.length;drawLogo()};
 $("createCompany").onclick=()=>{const name=$("companyInput").value.trim();if(!name){$("companyInput").focus();$("companyInput").placeholder="Nama perusahaan wajib diisi!";return}const l=logos[logoIndex];localStorage.setItem(KEY,JSON.stringify({companyName:name,logoSymbol:l.symbol,logoName:l.name,createdAt:Date.now(),funds:10000,reputation:0}));updateMenu();openDashboard()};
-$("mainMenuFromDash").onclick=()=>show("home");
+$("mainMenuFromDash").onclick=()=>BackSystem.backTo("home");
 $("openCreator").onclick=()=>show("creator");
-$("backDash").onclick=openDashboard;
+$("backDash").onclick=()=>BackSystem.backTo("dashboard");
 const savedSettings=(()=>{try{return JSON.parse(localStorage.getItem(SETTINGS)||"{}")}catch{return {}}})();
 $("musicToggle").checked=savedSettings.music!==false;
 $("musicToggle").onchange=()=>localStorage.setItem(SETTINGS,JSON.stringify({music:$("musicToggle").checked}));
