@@ -27,10 +27,12 @@
     if(current){
       current.classList.remove("anim-enter");
       current.classList.add("anim-exit");
+      let fallback;
       current.addEventListener("animationend",()=>{
+        window.clearTimeout(fallback);
         if(run===token)finish();
       },{once:true});
-      window.setTimeout(finish,exitDuration+40);
+      fallback=window.setTimeout(finish,exitDuration+40);
     }else finish();
   }
   window.AnimationSystem={transition};
