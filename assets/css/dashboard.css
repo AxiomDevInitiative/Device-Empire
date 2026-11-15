@@ -32,7 +32,7 @@
 .create-orb svg{width:34px;height:34px}
 .create-orb.is-open{transform:rotate(45deg);box-shadow:0 0 0 9px #5bd8ff18,0 12px 36px #38bde766}
 .action-caption{text-align:center;margin-top:8px;color:#a8c4df;font-size:9px;font-weight:900;letter-spacing:1.7px}
-.create-popup{position:absolute;z-index:10;left:50%;bottom:calc(100% + 13px);width:min(270px,calc(100vw - 70px));transform:translateX(-50%);padding:12px;border:1px solid #52718e;border-radius:15px;background:linear-gradient(145deg,#1b3049,#0d192a);box-shadow:0 18px 45px #0009;transform-origin:50% 100%;animation:popupIn .18s ease-out both}
+.create-popup{position:absolute;z-index:10;left:50%;bottom:calc(100% + 13px);width:min(270px,calc(100vw - 70px));transform:translateX(-50%);padding:12px;border:1px solid #52718e;border-radius:15px;background:linear-gradient(145deg,#1b3049,#0d192a);box-shadow:0 18px 45px #0009;transform-origin:50% 100%;animation:popupIn .16s ease-out both}
 .create-popup:after{content:"";position:absolute;left:calc(50% - 7px);bottom:-7px;width:13px;height:13px;background:#101e31;border-right:1px solid #52718e;border-bottom:1px solid #52718e;transform:rotate(45deg)}
 .popup-title{padding:2px 4px 9px;color:#85dfff}
 .popup-option{position:relative;z-index:1;display:flex;align-items:center;gap:10px;width:100%;padding:10px;border:1px solid #314b67;border-radius:11px;background:#101e31;color:#eaf6ff;text-align:left}
@@ -42,7 +42,9 @@
 .phone-glyph{width:32px;height:38px;display:grid;place-items:center;border-radius:8px;background:#1b3b55;color:#65dcff}
 .phone-glyph svg{width:22px;height:30px}
 .option-arrow{margin-left:auto;font-size:22px;color:#72dfff}
-@keyframes popupIn{from{opacity:0;translate:0 7px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
+@keyframes popupIn{from{opacity:0;translate:0 5px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+.create-popup.is-closing{animation:popupOut .14s ease-in both;pointer-events:none}
+@keyframes popupOut{from{opacity:1;translate:0 0;scale:1}to{opacity:0;translate:0 3px;scale:.985}}
 .dashboard-save-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:12px;border-top:1px solid #293d56}
 .save-status{font-size:10px;color:#90a8c2}
 .save-button{display:flex;align-items:center;gap:7px;padding:8px 13px;border:1px solid #3d6684;border-radius:9px;background:#142d43;color:#bdeeff;font-size:11px;font-weight:800}
