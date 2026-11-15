@@ -1,5 +1,5 @@
 /* Device Empire — dashboard presentation and device action menu */
-(()=> {
+(()=>{
   const $=id=>document.getElementById(id);
   function formatMoney(value){return "NC "+Number(value||0).toLocaleString("en-US")}
   function render(data){
@@ -13,25 +13,34 @@
   function init(){
     const toggle=$("createDeviceToggle"),popup=$("createDevicePopup");
     if(!toggle||!popup)return;
-    toggle.addEventListener("click",()=>{
-      const opening=popup.classList.contains("hidden");
-      popup.classList.toggle("hidden",!opening);
-      toggle.setAttribute("aria-expanded",String(opening));
-      toggle.classList.toggle("is-open",opening);
-    });
-    document.addEventListener("pointerdown",event=>{
-      if(!event.target.closest(".create-anchor")){
-        popup.classList.add("hidden");
-        toggle.setAttribute("aria-expanded","false");
-        toggle.classList.remove("is-open");
-      }
-    });
-    $("createHandphone").addEventListener("click",()=>{
-      popup.classList.add("hidden");
+    let closeTimer;
+    function closePopup(){
+      if(popup.classList.contains("hidden")||popup.classList.contains("is-closing"))return;
+      popup.classList.add("is-closing");
       toggle.setAttribute("aria-expanded","false");
       toggle.classList.remove("is-open");
-      const status=$("saveStatus");
-      status.textContent="Handphone Creator will be added in the next development step.";
+      clearTimeout(closeTimer);
+      closeTimer=window.setTimeout(()=>{
+        popup.classList.add("hidden");
+        popup.classList.remove("is-closing");
+      },140);
+    }
+    function openPopup(){
+      clearTimeout(closeTimer);
+      popup.classList.remove("hidden","is-closing");
+      toggle.setAttribute("aria-expanded","true");
+      toggle.classList.add("is-open");
+    }
+    toggle.addEventListener("click",()=>{
+      if(popup.classList.contains("hidden"))openPopup();
+      else closePopup();
+    });
+    document.addEventListener("pointerdown",event=>{
+      if(!event.target.closest(".create-anchor"))closePopup();
+    });
+    $("createHandphone").addEventListener("click",()=>{
+      closePopup();
+      $("saveStatus").textContent="Handphone Creator will be added in the next development step.";
     });
     $("manualSave").addEventListener("click",()=>{
       const result=window.SaveSystem.save();
